@@ -1,11 +1,15 @@
 package com.example.task_api;
 
 import org.springframework.stereotype.Service;
+import com.example.task_api.repository.TaskRepository;
 
 @Service 
-
 public class TaskService {
+    private final TaskRepository taskRepository;
     
+    public TaskService(TaskRepository taskRepository){
+        this.taskRepository = taskRepository;
+    }
 
     public Task createTask(Task task){
         
@@ -15,6 +19,6 @@ public class TaskService {
 
         }
         task.setCompleted(false);
-        return task;
+        return taskRepository.save(task);
     }
 }

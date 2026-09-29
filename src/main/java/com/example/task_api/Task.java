@@ -1,13 +1,23 @@
 package com.example.task_api;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+
+@Entity 
 public class Task {
 
-    private Long id;
-    private  String title;
-    private Boolean completed;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    public Task() {
+    private Long id;
+    private  String title; //"hello" 
+    private Boolean completed;  
+
+    public Task() { // constructor 
     }
-        public Task(Long id, String title, Boolean completed){
+        public Task(Long id, String title, Boolean completed){ // constructor with paramiter
             this.id = id;
             this.title = title;
             this.completed = completed;
