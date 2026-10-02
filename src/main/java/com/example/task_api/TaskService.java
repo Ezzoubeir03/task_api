@@ -24,11 +24,14 @@ public class TaskService {
         task.setCompleted(false);
         return taskRepository.save(task);
     }
-
+      ///this the DTO(Data Transfer Object)
     public Task updateTask(Long id, Task task){
         Task existingTask = taskRepository.findById(id).orElseThrow(() -> new RuntimeException("Task not Found"));
         existingTask.setTitle(task.getTitle());
         existingTask.setCompleted(task.isCompleted());
         return taskRepository.save(existingTask);
+    }
+    public void deleteTask(Long id){
+        taskRepository.deleteById(id);
     }
 }

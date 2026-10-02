@@ -17,6 +17,29 @@ public class Task {
 
     public Task() { // constructor 
     }
+    public Task createTask(TaskRequest request){
+        if(request.getTitle() == null || request.getTitle().isBlank()){
+            throw new IllegalArgumentException("Task title cannot be null or empty.");
+        }
+
+        Task task2 = new Task();
+
+        task2.setTitle(request.getTitle());
+        task2.setCompleted(false);
+        return task2;
+    }
+
+class TaskRequest {
+    private String title;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+}
         public Task(Long id, String title, Boolean completed){ // constructor with paramiter
             this.id = id;
             this.title = title;
